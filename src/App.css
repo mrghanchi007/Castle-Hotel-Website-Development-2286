@@ -6,6 +6,7 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll during animations */
 }
 
 /* Custom scrollbar */
@@ -45,9 +46,9 @@ body {
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
 /* Gradient text */
@@ -58,13 +59,13 @@ body {
   background-clip: text;
 }
 
-/* Hero overlay */
+/* Hero overlay - Changed to black gradient */
 .hero-overlay {
   background: linear-gradient(
     135deg,
-    rgba(180, 25, 23, 0.8) 0%,
-    rgba(180, 25, 23, 0.6) 50%,
-    rgba(180, 25, 23, 0.4) 100%
+    rgba(0,0,0,0.7) 0%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0.3) 100%
   );
 }
 
@@ -75,7 +76,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(180, 25, 23, 0.3);
+  box-shadow: 0 10px 20px rgba(180,25,23,0.3);
 }
 
 /* Image lazy loading placeholder */
@@ -86,8 +87,12 @@ body {
 }
 
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Form animations */
@@ -127,4 +132,49 @@ body {
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease-out;
+}
+
+/* Enhanced Page Transition Styles */
+.page-transition {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth page transitions for all devices */
+@media (max-width: 768px) {
+  .page-transition {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Prevent layout shift during page transitions */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure smooth transitions on route changes */
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Animation performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Hardware acceleration for better performance */
+.page-transition,
+.page-transition * {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
