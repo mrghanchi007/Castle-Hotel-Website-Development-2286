@@ -22,7 +22,7 @@ const ServicesPage=()=> {
       title: 'Wedding Venue',
       subtitle: 'Your Perfect Day Awaits',
       description: 'Create magical memories in our historic setting with personalized wedding packages tailored to your dreams.',
-      image: 'https://i.ibb.co/whHnqLpW/Castle-Hotel-Rooms-10.jpg',
+      image: 'https://i.ibb.co/FbH4YWMX/hotel-hall-4.jpg',
       features: [
         'Historic castle views for ceremony',
         'Elegant reception halls',
@@ -37,14 +37,14 @@ const ServicesPage=()=> {
         {
           name: 'Intimate Celebration',
           guests: 'Up to 50 guests',
-          price: 'From £2,500',
-          features: ['Ceremony space','Reception dinner','Wedding coordinator']
+          price: 'Contact for pricing',
+          features: ['Ceremony space','Reception dinner','Wedding coordinator','Reception time: 8am to 12am']
         },
         {
           name: 'Grand Celebration',
           guests: 'Up to 150 guests',
-          price: 'From £5,500',
-          features: ['Full venue hire','Premium catering','Bridal suite','Photography package']
+          price: 'Contact for pricing',
+          features: ['Full venue hire','Premium catering','Bridal suite','Photography package','Reception time: 8am to 12am']
         }
       ]
     },
@@ -54,7 +54,7 @@ const ServicesPage=()=> {
       title: 'Luxury Accommodation',
       subtitle: 'Comfort Meets Heritage',
       description: 'Elegant rooms and suites with modern amenities,offering comfort in our historic setting.',
-      image: 'https://i.ibb.co/VWSKYHVD/Castle-Hotel-Rooms-11.jpg',
+      image: 'https://i.ibb.co/2YSSHt4x/Washroom-1.jpg',
       features: [
         'Historic castle views',
         'Modern ensuite bathrooms',
@@ -69,13 +69,13 @@ const ServicesPage=()=> {
         {
           name: 'Classic Room',
           guests: 'Double occupancy',
-          price: 'From £89/night',
+          price: 'Contact for pricing',
           features: ['Queen bed','Castle views','Modern amenities']
         },
         {
           name: 'Heritage Suite',
           guests: 'Up to 4 guests',
-          price: 'From £189/night',
+          price: 'Contact for pricing',
           features: ['Separate living area','Premium furnishings','Complimentary breakfast']
         }
       ]
@@ -86,7 +86,7 @@ const ServicesPage=()=> {
       title: 'Events & Functions',
       subtitle: 'Corporate & Private Events',
       description: 'Professional event spaces perfect for corporate meetings,private parties,and special celebrations.',
-      image: 'https://i.ibb.co/LzXB86p4/Castle-Hotel-Rooms-1.jpg',
+      image: 'https://i.ibb.co/YFx0jV8t/hotel-hall-5.jpg',
       features: [
         'Flexible meeting spaces',
         'Audio-visual equipment',
@@ -101,13 +101,13 @@ const ServicesPage=()=> {
         {
           name: 'Business Meeting',
           guests: 'Up to 25 people',
-          price: 'From £350/day',
+          price: 'Contact for pricing',
           features: ['Meeting room','AV equipment','Refreshments']
         },
         {
           name: 'Corporate Event',
           guests: 'Up to 100 people',
-          price: 'From £1,200/day',
+          price: 'Contact for pricing',
           features: ['Full venue access','Catering','Event coordination']
         }
       ]
@@ -118,7 +118,7 @@ const ServicesPage=()=> {
       title: 'Fine Dining',
       subtitle: 'Culinary Excellence',
       description: 'Exceptional dining experiences featuring locally sourced ingredients and traditional British cuisine.',
-      image: 'https://i.ibb.co/chnG4BWd/Castle-Hotel-Rooms-2.jpg',
+      image: 'https://i.ibb.co/KxNKxLmz/Washroom-2.jpg',
       features: [
         'Award-winning chef',
         'Locally sourced ingredients',
@@ -133,13 +133,13 @@ const ServicesPage=()=> {
         {
           name: 'Traditional Menu',
           guests: 'Per person',
-          price: 'From £28',
+          price: 'Contact for pricing',
           features: ['3-course meal','Seasonal ingredients','Local specialties']
         },
         {
           name: 'Tasting Experience',
           guests: 'Per person',
-          price: 'From £65',
+          price: 'Contact for pricing',
           features: ['7-course tasting','Wine pairing','Chef presentation']
         }
       ]
@@ -175,7 +175,7 @@ const ServicesPage=()=> {
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <LazyImage 
-            src="https://i.ibb.co/qF2KNrgb/Castle-Hotel-Rooms-3.jpg" 
+            src="https://i.ibb.co/dwgh17kH/hotel-service-counter.jpg" 
             alt="Castle Hotel Services" 
             className="w-full h-full object-cover" 
           />
@@ -408,10 +408,10 @@ const ServicesPage=()=> {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="tel:+441827317700" 
+                href="tel:01827954382" 
                 className="bg-white text-primary px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-white/90 transition-all elevation-2"
               >
-                Call +441827317700
+                Call 01827954382
               </a>
               <a 
                 href="mailto:info@castlehotel-tamworth.co.uk" 

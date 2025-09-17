@@ -28,7 +28,7 @@ const ContactPage = () => {
     {
       icon: FiPhone,
       title: 'Phone',
-      details: ['+441827317700'],
+      details: ['01827954382'],
       description: 'Call us for immediate assistance'
     },
     {
@@ -46,7 +46,7 @@ const ContactPage = () => {
     {
       icon: FiClock,
       title: 'Hours',
-      details: ['Reception: 24/7', 'Restaurant: 7:00 AM - 10:00 PM'],
+      details: ['Reception: 8am to 12am'],
       description: 'We\'re here when you need us'
     }
   ];
@@ -338,11 +338,11 @@ const ContactPage = () => {
               </p>
               <div className="space-y-4">
                 <a
-                  href="tel:+441827317700"
+                  href="tel:01827954382"
                   className="flex items-center space-x-3 text-white hover:text-white/80 transition-colors"
                 >
                   <SafeIcon icon={FiPhone} className="w-5 h-5" />
-                  <span className="font-medium">+441827317700</span>
+                  <span className="font-medium">01827954382</span>
                 </a>
                 <a
                   href="mailto:info@castlehotel-tamworth.co.uk"

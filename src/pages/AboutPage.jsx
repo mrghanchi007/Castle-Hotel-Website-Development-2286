@@ -86,7 +86,7 @@ const AboutPage = () => {
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <LazyImage
-            src="https://i.ibb.co/dsbS8zpL/Castle-Hotel-Rooms-6.jpg"
+            src="https://i.ibb.co/848HMvM1/Outside-Image.jpg"
             alt="Castle Hotel About"
             className="w-full h-full object-cover"
           />
@@ -142,19 +142,19 @@ const AboutPage = () => {
               className="grid grid-cols-2 gap-4"
             >
               <LazyImage
-                src="https://i.ibb.co/5XLLJGwS/Castle-Hotel-Rooms-7.jpg"
-                alt="Castle Hotel Historic Room"
+                src="https://i.ibb.co/QjPQwkcy/hotel-hall-1.jpg"
+                alt="Castle Hotel Historic Hall"
                 className="rounded-lg elevation-2"
               />
               <div className="space-y-4">
                 <LazyImage
-                  src="https://i.ibb.co/tTDWhSxn/Castle-Hotel-Rooms-8.jpg"
-                  alt="Castle Hotel Elegant Interior"
+                  src="https://i.ibb.co/cS7S067K/hotel-hall-2.jpg"
+                  alt="Castle Hotel Elegant Hall"
                   className="rounded-lg elevation-2"
                 />
                 <LazyImage
-                  src="https://i.ibb.co/qv0vqvS/Castle-Hotel-Rooms-9.jpg"
-                  alt="Castle Hotel Classic Room"
+                  src="https://i.ibb.co/Wv3zXmn5/hotel-hall-3.jpg"
+                  alt="Castle Hotel Classic Hall"
                   className="rounded-lg elevation-2"
                 />
               </div>

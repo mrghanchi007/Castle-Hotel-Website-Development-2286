@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -6,12 +6,14 @@ import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../components/common/SafeIcon';
 import LazyImage from '../components/common/LazyImage';
 import HeroSlider from '../components/common/HeroSlider';
+import BookingModal from '../components/common/BookingModal';
 
 const { FiCalendar, FiUsers, FiAward, FiHeart, FiMapPin, FiStar, FiCheck } = FiIcons;
 
 const HomePage = () => {
   const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [featuresRef, featuresInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const features = [
     {
@@ -120,24 +122,24 @@ const HomePage = () => {
             >
               <div className="space-y-4">
                 <LazyImage
-                  src="https://i.ibb.co/LzXB86p4/Castle-Hotel-Rooms-1.jpg"
+                  src="https://i.ibb.co/V0yrgtK6/Room-1.jpg"
                   alt="Castle Hotel Luxury Room"
                   className="rounded-lg elevation-2 h-48"
                 />
                 <LazyImage
-                  src="https://i.ibb.co/chnG4BWd/Castle-Hotel-Rooms-2.jpg"
+                  src="https://i.ibb.co/KjMrTpVH/Room-2.jpg"
                   alt="Castle Hotel Room Interior"
                   className="rounded-lg elevation-2 h-32"
                 />
               </div>
               <div className="space-y-4 mt-8">
                 <LazyImage
-                  src="https://i.ibb.co/qF2KNrgb/Castle-Hotel-Rooms-3.jpg"
+                  src="https://i.ibb.co/S4X7PFn6/Room-3.jpg"
                   alt="Castle Hotel Suite"
                   className="rounded-lg elevation-2 h-32"
                 />
                 <LazyImage
-                  src="https://i.ibb.co/TD5KbpXr/Castle-Hotel-Rooms-4.jpg"
+                  src="https://i.ibb.co/hF2gYWzp/Room-4.jpg"
                   alt="Castle Hotel Elegant Room"
                   className="rounded-lg elevation-2 h-48"
                 />
@@ -199,7 +201,7 @@ const HomePage = () => {
               transition={{ duration: 0.8 }}
             >
               <LazyImage
-                src="https://i.ibb.co/zTKHNFfQ/Castle-Hotel-Rooms-5.jpg"
+                src="https://i.ibb.co/S4NGCNdX/Room-5.jpg"
                 alt="Castle Hotel Premium Amenities"
                 className="rounded-lg elevation-3"
               />
@@ -303,12 +305,12 @@ const HomePage = () => {
               Create unforgettable memories at Castle Hotel, where history, luxury, and exceptional service come together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
+              <button
+                onClick={() => setIsBookingModalOpen(true)}
                 className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/90 transition-all elevation-2"
               >
                 Book Now
-              </Link>
+              </button>
               <Link
                 to="/services"
                 className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transition-all border border-white/30"
@@ -319,6 +321,12 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </motion.div>
   );
 };

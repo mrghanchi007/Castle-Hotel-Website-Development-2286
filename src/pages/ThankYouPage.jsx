@@ -37,8 +37,8 @@ const ThankYouPage = () => {
     {
       title: 'Call Us Directly',
       description: 'For immediate assistance',
-      action: 'tel:+441827317700',
-      label: '+441827317700',
+      action: 'tel:01827954382',
+      label: '01827954382',
       icon: FiPhone,
       primary: true
     },
@@ -189,7 +189,7 @@ const ThankYouPage = () => {
               <div>
                 <h4 className="font-semibold mb-2">Contact</h4>
                 <p className="text-white/90 text-sm">
-                  +441827317700<br />
+                  01827954382<br />
                   info@castlehotel-tamworth.co.uk
                 </p>
               </div>

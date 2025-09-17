@@ -115,11 +115,11 @@ const NotFoundPage = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+441827317700"
+                href="tel:01827954382"
                 className="flex items-center justify-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
                 <SafeIcon icon={FiPhone} className="w-5 h-5" />
-                <span>Call +441827317700</span>
+                <span>Call 01827954382</span>
               </a>
               <a
                 href="mailto:info@castlehotel-tamworth.co.uk"

@@ -129,10 +129,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <SafeIcon icon={FiPhone} className="w-5 h-5 text-primary" />
                 <a 
-                  href="tel:+441827317700"
+                  href="tel:01827954382"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  +441827317700
+                  01827954382
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -147,8 +147,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <SafeIcon icon={FiClock} className="w-5 h-5 text-primary mt-0.5" />
                 <div>
-                  <p className="text-gray-400">Reception: 24/7</p>
-                  <p className="text-gray-400">Restaurant: 7:00 AM - 10:00 PM</p>
+                  <p className="text-gray-400">Reception: 8am to 12am</p>
                 </div>
               </div>
             </div>

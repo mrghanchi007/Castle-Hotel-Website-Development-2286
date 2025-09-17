@@ -216,10 +216,10 @@ const SitemapPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+441827317700"
+                href="tel:01827954382"
                 className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
-                Call +441827317700
+                Call 01827954382
               </a>
               <a
                 href="mailto:info@castlehotel-tamworth.co.uk"

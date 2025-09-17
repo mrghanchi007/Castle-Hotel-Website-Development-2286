@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
+import BookingModal from '../common/BookingModal';
 
 const { FiMenu, FiX, FiChevronDown, FiPhone, FiMail } = FiIcons;
 
@@ -10,6 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const Header = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <SafeIcon icon={FiPhone} className="w-4 h-4" />
-                <span>+441827317700</span>
+                <span>01827954382</span>
               </div>
               <div className="flex items-center space-x-2">
                 <SafeIcon icon={FiMail} className="w-4 h-4" />
@@ -165,12 +167,12 @@ const Header = () => {
             ))}
 
             {/* Book Now Button */}
-            <Link
-              to="/contact"
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
               className="btn-primary bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary/90 transition-all elevation-2"
             >
               Book Now
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -224,18 +226,24 @@ const Header = () => {
                   </div>
                 ))}
                 <div className="px-4 py-3 border-t">
-                  <Link
-                    to="/contact"
+                  <button
+                    onClick={() => setIsBookingModalOpen(true)}
                     className="block w-full text-center bg-primary text-white px-6 py-2 rounded-full font-medium"
                   >
                     Book Now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
+      
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </motion.header>
   );
 };

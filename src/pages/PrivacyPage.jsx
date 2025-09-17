@@ -142,7 +142,7 @@ const PrivacyPage = () => {
                 </p>
                 <div className="space-y-2 text-gray-700">
                   <p><strong>Email:</strong> privacy@castlehotel-tamworth.co.uk</p>
-                  <p><strong>Phone:</strong> +441827317700</p>
+                  <p><strong>Phone:</strong> 01827954382</p>
                   <p><strong>Address:</strong> Castle Hotel, Lady Bank, Tamworth B79 7NB, United Kingdom</p>
                 </div>
               </motion.div>
