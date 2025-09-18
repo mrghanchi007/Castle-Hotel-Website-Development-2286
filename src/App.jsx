@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
+import BookNowPage from './pages/BookNowPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import SitemapPage from './pages/SitemapPage';
@@ -61,6 +62,14 @@ const AnimatedRoutes = () => {
           element={
             <PageTransition>
               <ContactPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/book-now" 
+          element={
+            <PageTransition>
+              <BookNowPage />
             </PageTransition>
           } 
         />

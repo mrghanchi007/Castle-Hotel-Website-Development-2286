@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -6,14 +6,12 @@ import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../components/common/SafeIcon';
 import LazyImage from '../components/common/LazyImage';
 import HeroSlider from '../components/common/HeroSlider';
-import BookingModal from '../components/common/BookingModal';
 
 const { FiCalendar, FiUsers, FiAward, FiHeart, FiMapPin, FiStar, FiCheck } = FiIcons;
 
 const HomePage = () => {
   const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [featuresRef, featuresInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const features = [
     {
@@ -305,12 +303,12 @@ const HomePage = () => {
               Create unforgettable memories at Castle Hotel, where history, luxury, and exceptional service come together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => setIsBookingModalOpen(true)}
+              <Link
+                to="/book-now"
                 className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/90 transition-all elevation-2"
               >
                 Book Now
-              </button>
+              </Link>
               <Link
                 to="/services"
                 className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transition-all border border-white/30"
@@ -321,12 +319,6 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Booking Modal */}
-      <BookingModal 
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
-      />
     </motion.div>
   );
 };

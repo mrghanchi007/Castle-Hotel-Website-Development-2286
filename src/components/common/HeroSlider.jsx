@@ -148,12 +148,22 @@ const HeroSlider = () => {
                 transition={{ delay: 0.5 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Link
-                  to={slides[currentSlide].ctaLink}
-                  className="btn-primary bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary/90 transition-all elevation-2"
-                >
-                  {slides[currentSlide].cta}
-                </Link>
+                {/* First slide links to BookNow page, others use regular links */}
+                {currentSlide === 0 ? (
+                  <Link
+                    to="/book-now"
+                    className="btn-primary bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary/90 transition-all elevation-2"
+                  >
+                    {slides[currentSlide].cta}
+                  </Link>
+                ) : (
+                  <Link
+                    to={slides[currentSlide].ctaLink}
+                    className="btn-primary bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary/90 transition-all elevation-2"
+                  >
+                    {slides[currentSlide].cta}
+                  </Link>
+                )}
                 <Link
                   to="/about"
                   className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transition-all border border-white/30"
