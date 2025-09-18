@@ -10,25 +10,15 @@ const BookNowPage = () => {
   const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
   const [debugInfo, setDebugInfo] = useState('');
   const [redirectCountdown, setRedirectCountdown] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(15);
+  const [timeRemaining, setTimeRemaining] = useState(5);
 
   useEffect(() => {
     let timeoutId;
     let checkCount = 0;
+    let countdownTimer;
     const maxChecks = 20; // Check for 10 seconds (20 * 500ms)
     
     setDebugInfo('Initializing SiteMinder widget...');
-    
-    // Start 15-second countdown timer
-    const countdownTimer = setInterval(() => {
-      setTimeRemaining(prev => {
-        if (prev <= 1) {
-          clearInterval(countdownTimer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
     
     // Function to check if widget is loaded
     const checkWidgetLoaded = () => {
@@ -57,7 +47,7 @@ const BookNowPage = () => {
         setDebugInfo('Widget loaded successfully!');
         setIsWidgetLoaded(true);
         setRedirectCountdown(null); // Cancel redirect if widget loads
-        clearInterval(countdownTimer); // Stop countdown timer
+        if (countdownTimer) clearInterval(countdownTimer); // Stop countdown timer
         setTimeRemaining(0); // Reset timer display
       } else if (checkCount < maxChecks) {
         setDebugInfo(`Checking widget content... (${checkCount}/${maxChecks})`);
@@ -67,6 +57,17 @@ const BookNowPage = () => {
         setIsWidgetLoaded(true);
       }
     };
+
+    // Start 5-second countdown timer
+    countdownTimer = setInterval(() => {
+      setTimeRemaining(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownTimer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
     // Initialize widget loading
     const initializeWidget = () => {
@@ -120,7 +121,7 @@ const BookNowPage = () => {
       setIsWidgetLoaded(true);
     }, 12000);
 
-    // Redirect timeout: Redirect to direct booking after 15 seconds if widget not loaded
+    // Redirect timeout: Redirect to direct booking after 5 seconds if widget not loaded
     const redirectTimeout = setTimeout(() => {
       if (!isWidgetLoaded) {
         setDebugInfo('Widget failed to load, redirecting to direct booking...');
@@ -138,13 +139,13 @@ const BookNowPage = () => {
           }
         }, 1000);
       }
-    }, 15000);
+    }, 5000);
 
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
       clearTimeout(fallbackTimeout);
       clearTimeout(redirectTimeout);
-      clearInterval(countdownTimer);
+      if (countdownTimer) clearInterval(countdownTimer);
     };
   }, []);
 
