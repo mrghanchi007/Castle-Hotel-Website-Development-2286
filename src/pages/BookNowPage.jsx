@@ -9,6 +9,8 @@ const { FiArrowLeft, FiPhone, FiMail, FiMapPin } = FiIcons;
 const BookNowPage = () => {
   const [isWidgetLoaded, setIsWidgetLoaded] = useState(false);
   const [debugInfo, setDebugInfo] = useState('');
+  const [redirectCountdown, setRedirectCountdown] = useState(null);
+  const [timeRemaining, setTimeRemaining] = useState(15);
 
   useEffect(() => {
     let timeoutId;
@@ -16,6 +18,17 @@ const BookNowPage = () => {
     const maxChecks = 20; // Check for 10 seconds (20 * 500ms)
     
     setDebugInfo('Initializing SiteMinder widget...');
+    
+    // Start 15-second countdown timer
+    const countdownTimer = setInterval(() => {
+      setTimeRemaining(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownTimer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
     
     // Function to check if widget is loaded
     const checkWidgetLoaded = () => {
@@ -43,6 +56,9 @@ const BookNowPage = () => {
       if (hasContent) {
         setDebugInfo('Widget loaded successfully!');
         setIsWidgetLoaded(true);
+        setRedirectCountdown(null); // Cancel redirect if widget loads
+        clearInterval(countdownTimer); // Stop countdown timer
+        setTimeRemaining(0); // Reset timer display
       } else if (checkCount < maxChecks) {
         setDebugInfo(`Checking widget content... (${checkCount}/${maxChecks})`);
         timeoutId = setTimeout(checkWidgetLoaded, 500);
@@ -104,9 +120,31 @@ const BookNowPage = () => {
       setIsWidgetLoaded(true);
     }, 12000);
 
+    // Redirect timeout: Redirect to direct booking after 15 seconds if widget not loaded
+    const redirectTimeout = setTimeout(() => {
+      if (!isWidgetLoaded) {
+        setDebugInfo('Widget failed to load, redirecting to direct booking...');
+        setRedirectCountdown(3);
+        
+        // Start countdown
+        let countdown = 3;
+        const countdownInterval = setInterval(() => {
+          countdown--;
+          setRedirectCountdown(countdown);
+          
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            window.location.href = 'https://direct-book.com/properties/castlehotel2';
+          }
+        }, 1000);
+      }
+    }, 15000);
+
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
       clearTimeout(fallbackTimeout);
+      clearTimeout(redirectTimeout);
+      clearInterval(countdownTimer);
     };
   }, []);
 
@@ -205,10 +243,47 @@ const BookNowPage = () => {
                         >
                           Loading SiteMinder booking system...
                         </motion.p>
+                        
+                        {/* Countdown Timer */}
+                        {timeRemaining > 0 && (
+                          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                            <p className="text-blue-700 text-sm">
+                              Auto-redirect to direct booking in: 
+                              <span className="font-bold ml-2 text-lg">{timeRemaining}s</span>
+                            </p>
+                          </div>
+                        )}
+                        
                         {debugInfo && (
                           <p className="text-gray-500 text-sm mt-2">
                             Debug: {debugInfo}
                           </p>
+                        )}
+                        
+                        {/* Redirect Countdown */}
+                        {redirectCountdown !== null && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg"
+                          >
+                            <h4 className="text-yellow-800 font-semibold mb-2">
+                              Redirecting to Direct Booking
+                            </h4>
+                            <p className="text-yellow-700 text-sm mb-2">
+                              Widget failed to load. Redirecting you to our secure booking platform...
+                            </p>
+                            <div className="flex items-center justify-center">
+                              <motion.div
+                                key={redirectCountdown}
+                                initial={{ scale: 1.2 }}
+                                animate={{ scale: 1 }}
+                                className="text-2xl font-bold text-yellow-800"
+                              >
+                                {redirectCountdown}
+                              </motion.div>
+                            </div>
+                          </motion.div>
                         )}
                       </motion.div>
                       
@@ -259,12 +334,50 @@ const BookNowPage = () => {
                 >
                   {/* Fallback content if widget fails to load */}
                   {isWidgetLoaded && (
-                    <div className="text-center py-12 text-gray-500">
-                      <p className="mb-4">If the booking widget doesn't appear, please:</p>
-                      <div className="space-y-2 text-sm">
-                        <p>• Refresh the page</p>
-                        <p>• Check your internet connection</p>
-                        <p>• Contact us directly at 01827954382</p>
+                    <div className="text-center py-12">
+                      <div className="max-w-md mx-auto">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                          Having trouble with the booking widget?
+                        </h3>
+                        <p className="text-gray-600 mb-6">
+                          No worries! You can still complete your reservation using our secure direct booking platform.
+                        </p>
+                        
+                        {/* Direct Booking Button */}
+                        <div className="mb-8">
+                          <a
+                            href="https://direct-book.com/properties/castlehotel2"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-full text-lg font-semibold hover:bg-primary/90 transition-all elevation-2 shadow-lg"
+                          >
+                            🏰 Book Directly Online
+                          </a>
+                          <p className="text-sm text-gray-500 mt-2">
+                            Secure booking • Opens in new window
+                          </p>
+                        </div>
+                        
+                        {/* Alternative Options */}
+                        <div className="bg-gray-50 rounded-lg p-6">
+                          <h4 className="font-semibold text-gray-800 mb-3">
+                            Other Options:
+                          </h4>
+                          <div className="space-y-3 text-sm text-gray-600">
+                            <div className="flex items-center justify-center space-x-2">
+                              <span>🔄</span>
+                              <span>Refresh this page to try the widget again</span>
+                            </div>
+                            <div className="flex items-center justify-center space-x-2">
+                              <span>📞</span>
+                              <span>Call us directly: <strong>01827 954 382</strong></span>
+                            </div>
+                            <div className="flex items-center justify-center space-x-2">
+                              <span>✉️</span>
+                              <span>Email: info@castlehotel-tamworth.co.uk</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
